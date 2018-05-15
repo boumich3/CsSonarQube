@@ -3,10 +3,13 @@ pipeline {
     stages {
         stage('SonarQube Scanner') { 
             agent {
-                label "windows" 
+                docker { 
+                    image 'boumich3/sonarqubescanner-msbuild'
+                    label 'windows'
+                }
             }
             steps {
-                bat "git --version"
+                bat 'git --version'
             }
         }
     }
