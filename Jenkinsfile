@@ -3,11 +3,15 @@ pipeline {
     stages {
         stage('SonarQube Scanner') { 
             agent {
-                label 'windows'
+                docker { 
+                    image 'boumich3/sonarqubescanner-msbuild'
+                }
             }
             steps {
                 withSonarQubeEnv('My SonarQube Server') {
-                    echo 'test'
+                    bat 'SonarScanner.MSBuild.exe begin /k:"SonarQubeCs_Test" /n:"SonarQubeCs" /d:sonar.language="cs"'
+                    bat 'MSBuild.exe SonarQubeCs.sln /t:rebuild'
+                    bat 'SonarScanner.MSBuild.exe end'
                 }
             }
         }
