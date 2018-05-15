@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage('SonarQube Scanner') { 
             agent {
-                label 'windows'
+                docker { 
+                    image 'boumich3/sonarqubescanner-msbuild'
+                }
             }
             steps {
                 withSonarQubeEnv('My SonarQube Server') {
