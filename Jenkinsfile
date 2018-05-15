@@ -7,17 +7,15 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('My SonarQube Server') {
-                    script {
-                        sh 'SonarScanner.MSBuild.exe begin /k:"SonarQubeCs_Test" /n:"SonarQubeCs" /d:sonar.language="cs"'
-                        sh 'MSBuild.exe SonarQubeCs.sln /t:rebuild'
-                        sh 'SonarScanner.MSBuild.exe end'
-                    }
+                    sh 'SonarScanner.MSBuild.exe begin /k:"SonarQubeCs_Test" /n:"SonarQubeCs" /d:sonar.language="cs"'
+                    sh 'MSBuild.exe SonarQubeCs.sln /t:rebuild'
+                    sh 'SonarScanner.MSBuild.exe end'
                 }
             }
         }
         stage("Quality Gate") {
             steps {
-                timeout(time: 1, unit: 'MINUTES') {
+                timeout(time: 1, unit: 'HOURS') {
                     waitForQualityGate abortPipeline: true
                 }
             }
