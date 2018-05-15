@@ -9,7 +9,9 @@ pipeline {
                 }
             }
             steps {
-                sh 'git --version'
+                withSonarQubeEnv('My SonarQube Server') {
+                    echo 'test'
+                }
             }
         }
     }
