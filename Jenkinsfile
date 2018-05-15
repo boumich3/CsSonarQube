@@ -6,7 +6,7 @@ pipeline {
                 label "windows" 
             }
             steps {
-                echo "test"
+                bat "git --version"
             }
         }
     }
