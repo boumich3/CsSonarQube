@@ -2,12 +2,12 @@ pipeline {
     agent none
     stages {
         stage('SonarQube Scanner') { 
-            node("windows") {
-                steps {
-                    echo "test"
-                }
+            agent {
+                label "windows" 
             }
-            
+            steps {
+                echo "test"
+            }
         }
     }
 }
