@@ -3,9 +3,7 @@ pipeline {
     stages {
         stage('SonarQube Scanner') { 
             agent {
-                docker {
-                    label 'windows'
-                }
+                label 'windows'
             }
             steps {
                 withSonarQubeEnv('My SonarQube Server') {
