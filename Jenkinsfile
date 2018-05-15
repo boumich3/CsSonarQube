@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage('SonarQube Scanner') { 
             agent {
-                docker { 
-                    image 'microsoft/dotnet-framework'
+                docker {
                     label 'windows'
                 }
             }
