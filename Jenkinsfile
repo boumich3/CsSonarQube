@@ -9,7 +9,7 @@ pipeline {
                 }
             }
             steps {
-                bat 'git --version'
+                sh 'git --version'
             }
         }
     }
