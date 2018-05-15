@@ -6,7 +6,7 @@ pipeline {
                 label 'windows'
             }
             steps {
-                bat 'docker ps'
+                bat 'docker image ls'
             }
         }
     }
