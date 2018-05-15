@@ -1,20 +1,23 @@
 pipeline {
-    agent any
-
+    agent none 
     stages {
-        stage('Build') {
+        stage('SonarQube Scanner') { 
+            agent {
+                docker { image 'boumich3/sonarqubescanner-msbuild' }
+            }
             steps {
-                echo 'Building..'
+                withSonarQubeEnv('My SonarQube Server') {
+                    sh 'SonarScanner.MSBuild.exe begin /k:"SonarQubeCs_Test" /n:"SonarQubeCs" /d:sonar.language="cs"'
+                    sh 'MSBuild.exe SonarQubeCs.sln /t:rebuild'
+                    sh 'SonarScanner.MSBuild.exe end'
+                }
             }
         }
-        stage('Test') {
+        stage("Quality Gate") {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                timeout(time: 1, unit: 'HOURS') {
+                    waitForQualityGate abortPipeline: true
+                }
             }
         }
     }
