@@ -36,5 +36,29 @@ namespace SonarQubeCs.Domain
             test = sb.ToString();
             Y = sb.ToString();
         }
+
+        public int complexMethod()
+        {
+            for(int i=1; i<10; i++)
+            {
+                for (int j = 1; j < 10; j++)
+                {
+                    for (int k = 1; k < 10; k++)
+                    {
+                        for (int m = 1; i < 10; j++)
+                        {
+                            if( i > 10000)
+                            {
+                                return 0;
+                            }
+                        }
+                        return 0;
+                    }
+                    return 0;
+                }
+                return 0;
+            }
+            return 0;
+        }
     }
 }
