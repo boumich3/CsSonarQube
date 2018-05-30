@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('SonarQube Scanner') { 
             steps {
-                withSonarQubeEnv('My SonarQube Server') {
+                withSonarQubeEnv('SonarQube') {
                     script {
                         def msBuildHome = tool "MsBuild"
                         def sqScannerMsBuildHome = tool "SonarMsBuild"
