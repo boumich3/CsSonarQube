@@ -3,6 +3,4 @@
   <Property Name="sonar.language">cs</Property>
   <Property Name="sonar.sources">sonar_csharp</Property>
   <Property Name="sonar.tests">sonar_csharp.test</Property>
-  <Property Name="sonar.cs.vstest.reportsPaths">TestResults\*.trx<Property>
-  <Property Name="sonar.cs.opencover.reportsPaths">opencover.xml<Property>
 </SonarQubeAnalysisProperties>
