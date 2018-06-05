@@ -4,5 +4,6 @@
   <Property Name="sonar.sources">sonar_csharp</Property>
   <Property Name="sonar.tests">sonar_csharp.test</Property>
   <Property Name="sonar.sourceEncoding">UTF-8</Property>
-  <Property Name="sonar.exclusions">**/bin/**,**/obj/*,**/*Test*/**</Property>
+  <Property Name="sonar.exclusions">**/bin/**,**/obj/**,**/Properties/**</Property>
+  <Property Name="sonar.test.exclusions">**/bin/**,**/obj/**,**/Properties/**</Property>
 </SonarQubeAnalysisProperties>
