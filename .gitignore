@@ -333,3 +333,4 @@ ASALocalRun/
 .sonarqube/
 .scannerwork/
 log.txt
+/opencover.xml
