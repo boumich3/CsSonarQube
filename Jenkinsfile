@@ -13,7 +13,7 @@ pipeline {
                         bat "\"${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe\" begin /k:\"optel_station\" /n:\"Optel Station\" /s:\"%CD%\\SonarQube.Analysis.xml\""
                         bat "\"C:\\nuget\\nuget.exe\" restore \"%CD%\\sonar_csharp.sln\""
                         bat "\"${msBuildHome}\\MSBuild.exe\" /t:rebuild"
-                        bat "\"${openCoverHome}\\Apps\\OpenCover\\OpenCover.Console.exe\" -output:\"%CD%\\opencover.xml\" -register:user -target:\"${vsTestHome}\\vstest.console.exe\" -targetargs:\"/Logger:trx sonar_csharp.test\\bin\\Debug\\sonar_csharp.test.dll\""
+                        bat "\"${openCoverHome}\\OpenCover.Console.exe\" -output:\"%CD%\\opencover.xml\" -register:user -target:\"${vsTestHome}\\vstest.console.exe\" -targetargs:\"/Logger:trx sonar_csharp.test\\bin\\Debug\\sonar_csharp.test.dll\""
                         bat "\"${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe\" end"
                     }
                 }
