@@ -1,5 +1,11 @@
 pipeline {
     agent any
+     parameters {
+        // Parameters are available as ENV variable
+        // choices are newline separated
+        choice(choices: 'CsSonarQube', description: 'Product?', name: 'product')
+        booleanParam(defaultValue: false, description: 'Check this box the create a release with your current branch', name: 'release')
+    }
     stages {
         stage('SonarQube Scanner') { 
             steps {
